@@ -1,4 +1,4 @@
-package org.example.exercices.entity;
+package org.example.exercices.Exercice1.controller.entity;
 
 public class Todo {
 

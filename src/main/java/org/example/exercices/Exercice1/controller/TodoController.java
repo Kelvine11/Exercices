@@ -1,7 +1,7 @@
-package org.example.exercices.controller;
+package org.example.exercices.Exercice1.controller;
 
-import org.example.exercices.entity.Todo;
-import org.example.exercices.service.TodoService;
+import org.example.exercices.Exercice1.controller.entity.Todo;
+import org.example.exercices.Exercice1.controller.service.TodoService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class TodoController {

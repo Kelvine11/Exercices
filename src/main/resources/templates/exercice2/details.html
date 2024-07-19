@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <span th:replace="~{exercice2/products :: bootstrap}"></span>
+</head>
+<body>
+
+
+<div class="container text-center">
+    <h1>Detail</h1>
+    <div class="card bg-warning-subtle">
+<p> Name : <span th:text="${product.name}"></span></p>
+<p> Category : <span th:text="${product.category}"></span></p>
+<p> Price : <span th:text="${product.price}"></span></p>
+
+    </div>
+</div>
+
+</body>
+</html>

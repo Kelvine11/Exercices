@@ -1,6 +1,6 @@
-package org.example.exercices.service;
+package org.example.exercices.Exercice1.controller.service;
 
-import org.example.exercices.entity.Todo;
+import org.example.exercices.Exercice1.controller.entity.Todo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
