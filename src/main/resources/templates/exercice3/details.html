@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infos</title>
+    <span th:replace="~{exercice3/index :: bootstrap}"></span>
+</head>
+<body>
+
+<div class="container text-center">
+    <h1>Detail</h1>
+    <div class="card bg-warning-subtle">
+        <p> Nom : <span th:text="${student.lastName}"></span></p>
+        <p> Prénom : <span th:text="${student.firstName}"></span></p>
+        <p> Age : <span th:text="${student.age}"></span></p>
+        <p> Email : <span th:text="${student.email}"></span></p>
+
+    </div>
+    <a th:href="@{/index}"><button>Retour</button></a>
+    <a th:href="@{/list}"><button>Liste</button></a>
+</div>
+
+</body>
+</html>

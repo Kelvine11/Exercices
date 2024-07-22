@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste</title>
+    <span th:replace="~{exercice3/index :: bootstrap}"></span>
+</head>
+<body>
+<div class="container">
+    <h1>Student list</h1>
+    <p th:if="${students.isEmpty()}">
+        Aucun résultat trouvé
+    </p>
+    <table th:unless="${students.isEmpty()}" class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s : ${students}">
+            <td th:text="${s.firstName}"></td>
+            <td th:text="${s.lastName}"></td>
+            <td><a th:href="@{/student/{id}(id=${s.id})}"><button class="btn btn-info">Details</button></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/index}"><button>Retour</button></a>
+</div>
+</body>
+</html>
