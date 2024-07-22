@@ -23,7 +23,9 @@
         <tr th:each="s : ${students}">
             <td th:text="${s.firstName}"></td>
             <td th:text="${s.lastName}"></td>
-            <td><a th:href="@{/student/{id}(id=${s.id})}"><button class="btn btn-info">Details</button></a></td>
+            <td><a th:href="@{/student/{id}(id=${s.id})}"><button class="btn btn-info">Details</button></a>
+            <a th:href="@{/form/{id}(id=${s.id})}"><button class="btn btn-info">Modifier</button></a>
+            <a th:href="@{/delete/{id}(id=${s.id})}"><button class="btn btn-info">Supprimer</button></a></td>
         </tr>
         </tbody>
     </table>

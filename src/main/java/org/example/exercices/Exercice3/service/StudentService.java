@@ -1,6 +1,5 @@
 package org.example.exercices.Exercice3.service;
 
-import org.example.exercices.Exercice2.entity.Product;
 import org.example.exercices.Exercice3.entity.Student;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +11,23 @@ import java.util.UUID;
 public class StudentService {
 
     private List<Student> students = new ArrayList<Student>();
-    private int numberId = 0;
 
     public StudentService() {
 
     }
 
     public void addStudent(Student student) {
+        if (students.isEmpty()) {
+            students.add(student);
+        } else {
+            for (int i = 0; i < students.size(); i++) {
+                System.out.println(student.getId().equals(students.get(i).getId()));
+                if (student.getId().equals(students.get(i).getId())) {
+                    students.set(i, student);
+                } else students.add(student);
 
-        students.add(student);
+            }
+        }
     }
 
     public List<Student> getStudents() {
@@ -32,9 +39,12 @@ public class StudentService {
     }
 
     public List<Student> getStudentByName(String lastName) {
-        return  students.stream().filter(s -> s.getLastName().equals(lastName)).toList();
+        return students.stream().filter(s -> s.getLastName().equals(lastName)).toList();
     }
 
+    public void deleteStudentById(UUID id) {
+        students.removeIf(s -> s.getId().equals(id));
+    }
 
 
 }
