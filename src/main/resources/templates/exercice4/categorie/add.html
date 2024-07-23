@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout Catégorie</title>
+    <span th:replace="~{exercice4/index :: bootstrap}"></span>
+</head>
+<body>
+<div class="container">
+    <h1>Ajouter une catégorie</h1>
+    <form th:action="@{/exercice4/categorie/add}" method="post" th:object="${categorie}">
+        <input th:field="*{id}" hidden>
+        <div>
+            <label class="form-label" for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" th:field="*{nom}">
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+        </div>
+        <div>
+            <label class="form-label" for="description">Description</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        </div>
+        <button class="btn btn-secondary">Ajouter</button>
+    </form>
+    <a th:href="@{/exercice4/index}">
+        <button class="btn btn-secondary">Retour</button>
+    </a>
+</div>
+</body>
+</html>

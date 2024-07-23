@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout recette</title>
+    <span th:replace="~{exercice4/index :: bootstrap}"></span>
+</head>
+<body>
+<div class="container">
+    <h1>Ajouter une recette</h1>
+    <form th:action="@{/exercice4/recette/add}" method="post" th:object="${recette}">
+        <input th:field="*{id}" hidden>
+        <div>
+            <label class="form-label" for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" th:field="*{nom}">
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+        </div>
+        <div>
+            <label class="form-label" for="ingedients">Ingrédients</label>
+            <input type="text" class="form-control" id="ingedients" th:field="*{ingedients}">
+            <span th:if="${#fields.hasErrors('ingedients')}" th:errors="*{ingedients}"></span>
+        </div>
+        <div>
+            <label class="form-label" for="instructions">Instructions</label>
+            <input type="text" class="form-control" id="instructions" th:field="*{instructions}">
+            <span th:if="${#fields.hasErrors('instructions')}" th:errors="*{instructions}"></span>
+        </div>
+        <div>
+            <label class="form-label" for="categorie">Catégorie</label>
+            <select class="form-control" id="categorie" th:field="*{categorie.id}">
+                <option th:each="cate : ${categories}" th:value="${cate.id}" th:text="${cate.nom}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('categorie')}" th:errors="*{categorie}"></span>
+
+        </div>
+        <button class="btn btn-secondary">Ajouter</button>
+    </form>
+    <a th:href="@{/exercice4/index}">
+        <button class="btn btn-secondary">Retour</button>
+    </a>
+</div>
+</body>
+</html>

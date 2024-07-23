@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste catégories</title>
+    <span th:replace="~{exercice4/index :: bootstrap}"></span>
+</head>
+<body>
+<div class="container">
+    <h1>Catégorie liste</h1>
+    <p th:if="${categories.isEmpty()}">
+        Aucun résultat trouvé
+    </p>
+    <table th:unless="${categories.isEmpty()}" class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${categories}">
+            <td th:text="${c.nom}"></td>
+            <td th:text="${c.description}"></td>
+            <td>
+                <a th:href="@{/exercice4/categorie/update/{id}(id=${c.id})}">
+                    <button class="btn btn-info">Modifier</button>
+                </a>
+                <a th:href="@{/exercice4/categorie/delete/{id}(id=${c.id})}">
+                    <button class="btn btn-info">Supprimer</button>
+                </a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/exercice4/index}">
+        <button class="btn btn-secondary">Retour</button>
+    </a>
+    <a th:href="@{/exercice4/categorie/add}">
+        <button class="btn btn-secondary">Ajouter une catégorie</button>
+    </a>
+</div>
+</body>
+</html>

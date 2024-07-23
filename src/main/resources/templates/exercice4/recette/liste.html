@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste recette</title>
+    <span th:replace="~{exercice4/index :: bootstrap}"></span>
+</head>
+<body>
+<div class="container">
+    <h1>Recette liste</h1>
+    <p th:if="${recettes.isEmpty()}">
+        Aucun résultat trouvé
+    </p>
+    <table th:unless="${recettes.isEmpty()}" class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Ingrédients</th>
+            <th scope="col">Instructions</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${recettes}">
+            <td th:text="${r.nom}"></td>
+            <td th:text="${r.ingedients}"></td>
+            <td th:text="${r.instructions}"></td>
+            <td th:text="${r.categorie.getNom()}"></td>
+            <td>
+                <a th:href="@{/exercice4/recette/update/{id}(id=${r.id})}">
+                    <button class="btn btn-info">Modifier</button>
+                </a>
+                <a th:href="@{/exercice4/recette/delete/{id}(id=${r.id})}">
+                    <button class="btn btn-info">Supprimer</button>
+                </a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/exercice4/index}">
+        <button class="btn btn-secondary">Retour</button>
+    </a>
+    <a th:href="@{/exercice4/recette/add}">
+        <button class="btn btn-secondary">Ajouter une recette</button>
+    </a>
+</div>
+</body>
+</html>
