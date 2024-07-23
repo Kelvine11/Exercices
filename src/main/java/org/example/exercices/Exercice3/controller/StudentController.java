@@ -1,9 +1,11 @@
 package org.example.exercices.Exercice3.controller;
 
+import jakarta.validation.Valid;
 import org.example.exercices.Exercice3.entity.Student;
 import org.example.exercices.Exercice3.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,9 +51,13 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public String addStudent(@ModelAttribute("student") Student student) {
-        studentService.addStudent(student);
-        return "redirect:/list";
+    public String addStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "exercice3/form";
+        } else {
+            studentService.addStudent(student);
+            return "redirect:/list";
+        }
     }
 
     @GetMapping("/form/{id}")
